@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.myapplication.MainActivity">
+
+    <item
+        android:id="@+id/about"
+        android:orderInCategory="100"
+        android:title="@string/about"/>
+    <item
+        android:id="@+id/faq"
+        android:orderInCategory="150"
+        android:title="@string/faq"/>
+</menu>

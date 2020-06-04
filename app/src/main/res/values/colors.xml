@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backGround">#F1F6F3</color>
+    <color name="colorPrimary">#3AB795</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#1BA2D8</color>
+    <color name="blueShopkaText">#394D5F</color>
+    <color name="colorBackground">#F1F6F3</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="backGround2">#F1F6F3</color>
+    <color name="greenPB">#30C751</color>
+    <color name="redPB">#E85A5A</color>
+    <color name="yellowPB">#E8E36B</color>
+</resources>
