@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(items[i].CO2Footprint);
         }
         co2footprint = map(0,5,0, 15000, (_temp_footprint < 0 ? 0 : (_temp_footprint > 15000 ? 15000: _temp_footprint)));
-
-
+        
         super.onCreate(savedInstanceState);
         if (tester == 1){
             setContentView(R.layout.activity_main);
