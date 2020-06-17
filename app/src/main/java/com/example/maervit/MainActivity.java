@@ -17,6 +17,10 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.maervit.json.Fridge;
+import com.example.maervit.json.FridgeItem;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
@@ -24,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     public ProgressBar pb;
     private ZXingScannerView scannerView;
+    public Fridge fridge;
+    public int co2footprint = 0;
     TextView textView;
     public int tester = 2;
     public int number = 0;
@@ -36,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        fridge = new Fridge(this);
+
+        FridgeItem[] items = fridge.GetItemsInFridge();
+        long _temp_footprint = 0;
+        for (int i = 0; i < items.length; i++) {
+            _temp_footprint += items[i].CO2Footprint;
+            System.out.println(items[i].CO2Footprint);
+        }
+        co2footprint = map(0,5,0, 15000, (_temp_footprint < 0 ? 0 : (_temp_footprint > 15000 ? 15000: _temp_footprint)));
+
+
         super.onCreate(savedInstanceState);
         if (tester == 1){
             setContentView(R.layout.activity_main);
@@ -54,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.number);
         pb = findViewById(R.id.progress_horizontal);
         pb.setMax(5);
-        textView.setText(number + "/5");
-        pb.setProgress(number);
+        textView.setText(co2footprint + "/5");
+        pb.setProgress(co2footprint);
+
+
+
 
 
 //        handler.postDelayed(run,5000);
@@ -187,6 +207,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };*/
+
+
+    private int map(int newmin, int newmax, long oldmin, long oldmax, long a){
+        System.out.println(a);
+        return (int)((a - oldmin) * ((long)newmax - (long)newmin) / (oldmax - oldmin) + (long)newmin);
+    }
 
 }
 
