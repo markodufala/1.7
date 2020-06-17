@@ -1,14 +1,19 @@
 
 package com.example.maervit;
 
+import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.view.Gravity;
 import android.view.View;
@@ -109,6 +114,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void scanCode(View v) {
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Chýbajúce povolenia")
+                    .setMessage("Camera needs permision to run. Please, Go to Settings->Apps->Ekoshopka->Permissions and allow App to use Camera")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            opneMainActivity();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+        }
         scannerView = new ZXingScannerView(this);
         scannerView.setResultHandler(new ZXingScannerResultHandler());
 
@@ -184,6 +203,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
         //finish();
+    }
+
+    public void opneMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void openFAQ() {

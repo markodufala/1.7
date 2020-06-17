@@ -74,7 +74,7 @@ public class Fridge {
                 "            \"product_name\": \"Lorem ipsum\",\n" +
                 "            \"country_origin\": \"dolor sit amet\",\n" +
                 "            \"desc\": \"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat\",\n" +
-                "            \"co2footprint\":65186\n" +
+                "            \"co2footprint\":6800\n" +
                 "        }\n" +
                 "\n" +
                 "    ]\n" +
