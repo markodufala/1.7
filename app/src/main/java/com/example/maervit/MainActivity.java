@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public Fridge fridge;
     public int co2footprint = 0;
     TextView textView;
-    public int tester = 2;
+    public int tester = 1;
     public int number = 0;
     public boolean shouldStart = true;
     Handler handler = new Handler();
