@@ -35,7 +35,7 @@ public class Fridge {
 
         JDB = new JsonDB();
         try {
-        dbUserRoot = new JSONObject("{\n" +
+        dbUserRoot = /*new JSONObject("{\n" +
                 "    \"user\": {\n" +
                 "            \"id\": 42069,\n" +
                 "            \"fname\": \"Demo\",\n" +
@@ -56,13 +56,13 @@ public class Fridge {
                 "                        \"expdate\": \"11/9/2020\"\n" +
                 "                    }\n" +
                 "    ]\n" +
-                "}");//JDB.dbGetRootElement("user.json", context);
+                "}");//*/JDB.dbGetRootElement("user.json", context);
         dbProductsRoot = new JSONObject("{\n" +
                 "   \"content\": [\n" +
                 "\n" +
                 "        {\n" +
                 "            \"product_id\": 0,\n" +
-                "            \"product_name\": \"Lorem ipsum\",\n" +
+                "            \"product_name\": \"Lorem ipsum1\",\n" +
                 "            \"country_origin\": \"dolor sit amet\",\n" +
                 "            \"desc\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\n" +
                 "            \"co2footprint\":6502\n" +
@@ -71,7 +71,7 @@ public class Fridge {
                 "\n" +
                 "        {\n" +
                 "            \"product_id\": 1,\n" +
-                "            \"product_name\": \"Lorem ipsum\",\n" +
+                "            \"product_name\": \"Lorem ipsum2\",\n" +
                 "            \"country_origin\": \"dolor sit amet\",\n" +
                 "            \"desc\": \"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat\",\n" +
                 "            \"co2footprint\":6800\n" +

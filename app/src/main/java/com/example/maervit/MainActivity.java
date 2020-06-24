@@ -3,6 +3,7 @@ package com.example.maervit;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,6 +27,9 @@ import android.widget.Toast;
 import com.example.maervit.json.Fridge;
 import com.example.maervit.json.FridgeItem;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
@@ -47,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(!fileExists(this, "user.json"))
+            WriteUser();
+
+
         fridge = new Fridge(this);
 
         FridgeItem[] items = fridge.GetItemsInFridge();
@@ -230,6 +239,53 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };*/
+
+
+    private boolean fileExists(Context context, String filename) {
+        File file = new File(context.getFilesDir(), filename);
+        if(file == null || !file.exists()) {
+            return false;
+        }
+        System.out.println("If this piece of shit reached this point, it worked!");
+        return true;
+    }
+
+    private void WriteUser(){
+        System.out.println("If this piece of shit reached this point, it worked!");
+        try{
+        File file = new File(this.getFilesDir(), "user.json");
+        FileOutputStream in = new FileOutputStream(file);
+
+            try {
+                in.write(("{\n" +
+                        "    \"user\": {\n" +
+                        "            \"id\": 42069,\n" +
+                        "            \"fname\": \"Demo\",\n" +
+                        "            \"lname\": \"McDemovic\",\n" +
+                        "            \"dateformat\": \"dd/MM/yyyy\"    \n" +
+                        "        },\n" +
+                        "\n" +
+                        "    \"fridge\":   [\n" +
+                        "                    {\n" +
+                        "                        \"id\": 0,\n" +
+                        "                        \"adddate\": \"11/9/2000\",\n" +
+                        "                        \"expdate\": \"11/9/2020\"\n" +
+                        "                    },\n" +
+                        "\n" +
+                        "                    {\n" +
+                        "                        \"id\": 1,\n" +
+                        "                        \"adddate\": \"2/4/2019\",\n" +
+                        "                        \"expdate\": \"11/9/2020\"\n" +
+                        "                    }\n" +
+                        "    ]\n" +
+                        "}").getBytes());
+            }catch(Exception e){}
+            finally {
+                in.close();
+            }
+        } catch(Exception e){}
+
+    }
 
 
     private int map(int newmin, int newmax, long oldmin, long oldmax, long a){
