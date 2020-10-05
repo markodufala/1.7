@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public Fridge fridge;
     public int co2footprint = 0;
     TextView textView;
-    public int tester = 1;
+    public int tester = 2;
     public int number = 0;
     public boolean shouldStart = true;
     Handler handler = new Handler();
@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         co2footprint = map(0,5,0, 15000, (_temp_footprint < 0 ? 0 : (_temp_footprint > 15000 ? 15000: _temp_footprint)));
         
         super.onCreate(savedInstanceState);
+
+
         if (tester == 1){
             setContentView(R.layout.activity_main);
              number = 1;
@@ -84,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.number);
         pb = findViewById(R.id.progress_horizontal);
         pb.setMax(5);
-        textView.setText(co2footprint + "/5");
-        pb.setProgress(co2footprint);
+        textView.setText(co2footprint + "/5");  // POUZI co2footprint na zakreslenie udaju
+        pb.setProgress(co2footprint);     // AJ TU
 
 
 
